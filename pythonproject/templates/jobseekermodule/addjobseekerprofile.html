@@ -1,0 +1,72 @@
+{% extends 'navbar/jobseekernavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Job Application Form</title>
+</head>
+<body>
+{% block body %}
+<div class="container mt-2">
+    <h2>Job Application Form</h2>
+    <form method="post" action="{% url 'jobseekermodule:viewjobs ' %}">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" name='first_name' id="firstName" placeholder="Enter your first name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" name='last_name' id="lastName" placeholder="Enter your last name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" class="form-control" name='phone_number' id="phoneNumber" placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name='address' id="address" placeholder="Enter your address">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="10thMarks">10th Marks</label>
+                <input type="text" class="form-control" name='tenth_marks' id="10thMarks" placeholder="Enter your 10th marks">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="12thMarks">12th Marks</label>
+                <input type="text" class="form-control" name='twelfth_marks' id="12thMarks" placeholder="Enter your 12th marks">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cgpa">CGPA</label>
+                <input type="text" class="form-control" name='cgpa' id="cgpa" placeholder="Enter your CGPA">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="expectedSalary">Expected Salary</label>
+            <input type="text" class="form-control" name='expected_salary' id="expectedSalary" placeholder="Enter your expected salary">
+        </div>
+
+        <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" class="form-control" name='position' id="position" placeholder="Enter the position you are applying for">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+{% endblock %}
+</body>
+</html>

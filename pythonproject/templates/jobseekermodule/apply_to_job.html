@@ -1,0 +1,66 @@
+{% extends 'navbar/jobseekernavbar.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply to Job</title>
+</head>
+<body>
+{% block body %}
+<div class="container mt-5">
+    <h2 style="margin-bottom: 20px;">Apply to Job</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div style="border: 1px solid #dee2e6; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <div style="padding: 20px;">
+                    <h5 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">{{ job_details.work_title }}</h5>
+                    <p>
+                        <strong>Salary Offered:</strong> {{ job_details.salary_offered }}<br>
+                        <strong>Job Type:</strong> {{ job_details.get_job_type_display }}<br>
+                        <strong>Benefits:</strong> {{ job_details.benefits|linebreaks }}<br>
+                        <strong>Education Requirements:</strong> {{ job_details.education }}<br>
+                        <strong>Work Location:</strong> {{ job_details.work_location }}<br>
+                        <strong>Required Skills:</strong> {{ job_details.required_skills|linebreaks }}<br>
+                        <strong>Review:</strong> {{ job_details.review|linebreaks }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Hidden field to store the job_id -->
+                <input type="hidden" name="job_id" value="{{ job_details.id }}">
+
+                <div style="margin-bottom: 10px;">
+                    <label for="name">Your Name:</label>
+                    <input type="text" name="name" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label for="email">Your Email:</label>
+                    <input type="email" name="email" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label for="resume">Upload Resume:</label>
+                    <input type="file" name="resume" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" accept=".pdf, .doc, .docx" required>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label for="cover_letter">Cover Letter:</label>
+                    <textarea name="cover_letter" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" required></textarea>
+                </div>
+
+                <button type="submit" style="background-color: #28a745; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Apply to this job</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

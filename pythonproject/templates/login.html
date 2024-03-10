@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+    <nav style="background-color: #007bff; color: #fff; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1 style="margin: 0; padding: 0; font-size: 24px;">Online Job Portal</h1>
+            </div>
+            
+        </div>
+    </nav>
+    <div style="font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 40px; width: 400px;">
+            <h1 style="text-align: center; margin-bottom: 30px; color: #007bff;">Login Page</h1>
+            <form method="post" action="{% url 'login1' %}" style="margin-bottom: 20px;">
+                {% csrf_token %}
+                <label for="username">Username</label><br>
+                <input type="text" name="username" id="username" placeholder="Enter the username" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ced4da; transition: border-color 0.3s;">
+                <br>
+                <label for="password">Password</label><br>
+                <input type="password" name="password" id="password" placeholder="Enter the password" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ced4da; transition: border-color 0.3s;">
+                <br>
+                <button type="submit" name="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

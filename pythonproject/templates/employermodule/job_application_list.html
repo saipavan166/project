@@ -1,0 +1,45 @@
+{% extends 'navbar/employernavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications</title>
+</head>
+<body>
+{% block body %}
+<h1 style="text-align: center;">Job Applications</h1>
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; border: 2px solid black;">
+    <thead>
+        <tr>
+            <th style="border: 2px solid black; padding: 8px;">Name</th>
+            <th style="border: 2px solid black; padding: 8px;">Email</th>
+            <th style="border: 2px solid black; padding: 8px;">Job Details</th>
+            <th style="border: 2px solid black; padding: 8px;">Cover Letter</th>
+            <th style="border: 2px solid black; padding: 8px;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job_application in job_applications %}
+        <tr>
+            <td style="border: 2px solid black; padding: 8px;">{{ job_application.name }}</td>
+            <td style="border: 2px solid black; padding: 8px;">{{ job_application.email }}</td>
+            <td style="border: 2px solid black; padding: 8px;">{{ job_application.job_details }}</td>
+            <td style="border: 2px solid black; padding: 8px;">
+                {% if job_application.resume %}
+                    <a href="{{ job_application.resume.url }}" target="_blank">Download Resume</a>
+                {% else %}
+                    NO resume uploaded
+                {% endif %}
+            </td>
+            <td style="border: 2px solid black; padding: 8px;">
+                <a href="#" style="background-color: #4CAF50; color: white; padding: 8px 16px; text-decoration: none; border: none; border-radius: 4px;">Schedule Interview</a>
+                <a href="#" style="background-color: #4CAF50; color: white; padding: 8px 16px; text-decoration: none; border: none; border-radius: 4px;">Application Rejected</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+</body>
+</html>

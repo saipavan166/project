@@ -1,0 +1,36 @@
+{% extends 'navbar/projectnavbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+</head>
+<body>
+{% block body %}
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags %}
+            <script>alert("{{message}}")</script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<div style="max-width: 500px; margin: auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #007bff;">Register Page</h1>
+    <div style="text-align: center;">
+        <form method="post" action="{% url 'signup1' %}">
+            {% csrf_token %}
+            <label for="username" style="font-weight: bold; display: block; margin-bottom: 5px;">Username:</label><br>
+            <input type="text" id="username" name="username" placeholder="Enter your username" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+            <label for="password" style="font-weight: bold; display: block; margin-bottom: 5px;">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="Enter your password" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+            <label for="password1" style="font-weight: bold; display: block; margin-bottom: 5px;">Confirm Password:</label><br>
+            <input type="password" id="password1" name="password1" placeholder="Confirm your password" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+            <button type="submit" name="SUBMIT" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; display: block; width: 100%;">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

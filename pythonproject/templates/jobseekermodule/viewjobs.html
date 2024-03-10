@@ -1,0 +1,39 @@
+{% extends 'navbar/jobseekernavbar.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Details</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+{% block body %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Job Details List</h2>
+    <div class="row">
+        {% for job_details in job_details_list %}
+        <div class="col-md-4 mb-4">
+            <div style="border: 1px solid #dee2e6; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.1)';" onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
+                <div style="padding: 20px;">
+                    <h5 style="color: #007bff; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">{{ job_details.work_title }}</h5>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6;">
+                        <strong>Salary Offered:</strong> {{ job_details.salary_offered }}<br>
+                        <strong>Job Type:</strong> {{ job_details.get_job_type_display }}<br>
+                        <strong>Benefits:</strong> {{ job_details.benefits }}<br>
+                        <strong>Education:</strong> {{ job_details.education }}<br>
+                        <strong>Work Location:</strong> {{ job_details.work_location }}<br>
+                        <strong>Review:</strong> {{ job_details.review }}<br>
+                        <strong>Required Skills:</strong> {{ job_details.required_skills }}<br>
+                    </p>
+                    <a href="{% url 'jobseekermodule:apply_to_job' job_details.id %}" style="background-color: #008080; border-color: #28a745; color: #fff; padding: 8px 15px; text-decoration: none; border-radius: 5px;" class="btn-sm mt-3">Apply Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

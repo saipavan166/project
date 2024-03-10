@@ -1,0 +1,49 @@
+{% extends 'Navbar/employernavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<div style="max-width: 800px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center;">Job Details Form</h1>
+    <div>
+        <form method="post" action="{% url 'employermodule:add_job_details' %}" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            <label for="workTitle">Work Title</label>
+            <input type="text" name="workTitle" id="workTitle" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the Work Title" required>
+
+            <label for="salaryOffered">Salary offered</label>
+            <input type="text" name="salaryOffered" id="salaryOffered" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the Salary offered" required>
+
+            <label for="jobType">Job Type</label>
+            <select name="jobType" id="jobType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" required>
+                <option value="fullTime">Full-Time</option>
+                <option value="partTime">Part-Time</option>
+                <option value="contract">Contract</option>
+            </select>
+
+            <label for="benefits">Benefits</label>
+            <textarea name="benefits" id="benefits" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the benefits"></textarea>
+
+            <label for="education">Education</label>
+            <input type="text" name="education" id="education" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the Education" required>
+
+            <label for="requiredSkills">Required Skills</label>
+            <input type="text" name="requiredSkills" id="requiredSkills" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the Required Skills" required>
+
+            <label for="workLocation">Work Location</label>
+            <input type="text" name="workLocation" id="workLocation" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the Work Location" required>
+
+            <label for="review">Review</label>
+            <input type="text" name="review" id="review" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;" placeholder="Enter the review of company" required>
+
+            <button type="submit" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; display: block; margin: 0 auto;">Post the Job</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
